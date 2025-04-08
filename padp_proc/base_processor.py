@@ -4,7 +4,7 @@ from typing import Callable
 
 
 def clean_string(in_str: str) -> str:
-    PUNCT_MAKS = (".", ",", "!", "?", ":", ";", "'", "\"",
+    PUNCT_MAKS = set(".", ",", "!", "?", ":", ";", "'", "\"",
                   "/", "\\", "|", "(", ")", "[", "]", "{", "}")
     string_list = []
 

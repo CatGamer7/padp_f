@@ -4,12 +4,12 @@ from typing import Callable
 
 
 def clean_string(in_str: str) -> str:
-    PUNCT_MAKS = set(".", ",", "!", "?", ":", ";", "'", "\"",
+    PUNCT_MARKS = set(".", ",", "!", "?", ":", ";", "'", "\"",
                   "/", "\\", "|", "(", ")", "[", "]", "{", "}")
     string_list = []
 
     for char in in_str:
-        if (char in PUNCT_MAKS) or char.isdigit():
+        if (char in PUNCT_MARKS) or char.isdigit():
             continue
 
         string_list.append(char)

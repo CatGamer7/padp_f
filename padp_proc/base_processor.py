@@ -1,5 +1,20 @@
 from abc import ABC, abstractmethod
 import time
+from typing import Callable
+
+
+def clean_string(in_str: str) -> str:
+    PUNCT_MAKS = (".", ",", "!", "?", ":", ";", "'", "\"",
+                  "/", "\\", "|", "(", ")", "[", "]", "{", "}")
+    string_list = []
+
+    for char in in_str:
+        if (char in PUNCT_MAKS) or char.isdigit():
+            continue
+
+        string_list.append(char)
+
+    return "".join(string_list)
 
 
 class Base_Processor(ABC):
@@ -10,20 +25,11 @@ class Base_Processor(ABC):
     def __init__(self, in_filename: str, out_filename: str):
         self.in_filename = in_filename
         self.out_filename = out_filename
-
-    @staticmethod
-    def clean_string(in_str: str) -> str:
-        PUNCT_MAKS = (".", ",", "!", "?", ":", ";", "'", "\"")
-        string_list = []
-
-        for char in in_str:
-            if (char in PUNCT_MAKS) or char.isdigit():
-                continue
-
-            string_list.append(char)
-
-        return "".join(string_list)
     
+    @staticmethod
+    def get_clean_str() -> Callable:
+        return clean_string
+
     @abstractmethod
     def distribute(self, in_str: str) -> str:
         pass
